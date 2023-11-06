@@ -1,0 +1,62 @@
+package com.pjff.videogamesrf.data.remote
+
+import com.pjff.videogamesrf.data.remote.model.GameDetailDto
+import com.pjff.videogamesrf.data.remote.model.GameDto
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
+import retrofit2.http.Url
+
+
+interface GamesApi {
+
+    @GET
+    fun getGames(
+        @Url url: String?
+    ): Call<List<GameDto>>
+    //getGames("cm/games/games_list.php")
+
+
+    @GET("cm/games/game_detail.php")
+    fun getGameDetail(
+        @Query("id") id: String?/*,
+        @Query("name") name: String?*/
+    ): Call<GameDetailDto>
+    //getGameDetail("21347","amaury")
+    //cm/games/game_detail.php?id=21347&name=amaury
+
+    //Para Apiary
+   /* @GET("games/games_list")
+    fun getGamesApiary(): Call<List<GameDto>>
+
+    //games/game_detail/21357
+    @GET("games/game_detail/{id}")
+    fun getGameDetailApiary(
+        @Path("id") id: String?/*,
+        @Path("name") name: String?*/
+    ): Call<GameDetailDto>*/
+
+    //getGameDetailApiary("21357","Amaury")
+    //games/game_detail/21347/Amaury
+//------------------PR2-------------------------------
+
+    @GET("xmen/xmen_list")
+    fun getGamesApiary(): Call<List<GameDto>>
+
+    //games/game_detail/21357
+    @GET("xmen/xmen_detail/{id}")
+    fun getGameDetailApiary(
+        @Path("id") id: String?/*,
+        @Path("name") name: String?*/
+    ): Call<GameDetailDto>
+
+    //La liga del profe
+    //https://private-a649a-games28.apiary-mock.com/games/games_list
+    //Mi liga
+    //https://private-3dc8e0-xmen.apiary-mock.com/xmen/xmen_list
+    //GEThttps://private-3dc8e0-xmen.apiary-mock.com/xmen/xmen_detail/21357
+
+    //https://private-9e12b0-xmen3.apiary-mock.com/xmen/xmen_list
+
+}
